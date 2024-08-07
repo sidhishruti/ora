@@ -14,14 +14,17 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Set up AWS CLI
-      uses: aws-actions/configure-aws-credentials@v2
+      uses: aws-actions/configure-aws-credentials@v2 
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ap-south-1  # Change to your AWS region
+        aws-region: ap-south-1  
 
     - name: Set up kubectl
       uses: azure/setup-kubectl@v1
 
+    - name: Print Environment Variables
+      run: env   
+
     - name: Update kubeconfig
-      run: aws eks update-kubeconfig --region ap-south-1 --name ora-showroom
+      run: aws eks update-kubeconfig --region ap-south-1 --name ora-showroom --debug
