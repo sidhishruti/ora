@@ -30,7 +30,7 @@ jobs:
       run: aws eks update-kubeconfig --region ap-south-1 --name ora-showroom --debug
 
     - name: Verify kubectl Access
-      run: kubectl get nodes   
+      run: kubectl get ns  
 
     - name: Deploy to EKS
       run: |
